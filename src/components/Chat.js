@@ -50,7 +50,9 @@ class Chat extends Component {
             });
 
             let objDiv = document.querySelector('.chat-field');
-            objDiv.scrollTop = objDiv.scrollHeight;
+            setTimeout(() => {
+                objDiv.scrollTop = objDiv.scrollHeight;
+            }, 0);
 
             if (isNoContent(messageCopy)) {
                 this.addBotMessage(list, this.botMessages.defaultResponse, objDiv);
