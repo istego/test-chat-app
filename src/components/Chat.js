@@ -79,7 +79,7 @@ class Chat extends Component {
             }
 
             function isShout(message) {
-                return message.match(/[A-ZА-ЯЁ]{4,}/g) || (message.match(/[^\d\wа-яё]{2,}/gi) && !message.match(/[\d\wа-яё]/gi))
+                return message.match(/[A-ZА-ЯЁ]{2,}/g) || (message.match(/[^\d\wа-яё]{2,}/gi) && !message.match(/[\d\wа-яё]/gi))
             }
 
             function isQuestion(message) {
