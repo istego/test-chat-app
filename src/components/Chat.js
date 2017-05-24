@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Bot from './Bot';
 
 class Chat extends Component {
 
@@ -8,7 +9,6 @@ class Chat extends Component {
         this.updateMessage = this.updateMessage.bind(this);
         this.submitMessage = this.submitMessage.bind(this);
         this.enterSubmit = this.enterSubmit.bind(this);
-        this.addBotMessage = this.addBotMessage.bind(this);
 
         this.state = {
             message: '',
@@ -22,15 +22,9 @@ class Chat extends Component {
         }
     }
 
-    botMessages = {
-        defaultResponse: 'Да, да, я вас слушаю',
-        angryResponse: 'Пожалуйста, не сердитесь.',
-        questionResponse: [
-            'Простите, я затрудняюсь ответить',
-            'Сложный вопрос, здесь нужно подумать...',
-            'Не скажу, пусть это будет маленький секрет :)'
-        ]
-    };
+    bot = new Bot();
+    botMessages = this.bot.botMessages;
+    addBotMessage = this.bot.addBotMessage;
 
     updateMessage(event) {
         this.setState({
@@ -86,21 +80,6 @@ class Chat extends Component {
                 return message.substr(-1) === '?';
             }
         }
-    }
-
-    addBotMessage(list, message, div) {
-        setTimeout(() => {
-            const botMessage = {
-                id: list.length,
-                text: message,
-                className: 'message-bot'
-            };
-            list.push(botMessage);
-            this.setState({
-                messages: list,
-            });
-            div.scrollTop = div.scrollHeight;
-        }, 150);
     }
 
     enterSubmit(event) {
